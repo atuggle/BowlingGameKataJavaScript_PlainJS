@@ -1,13 +1,42 @@
 const myGame = require('./game')
 
+function bowlMany(game, throws, pins) {
+    for (let i=0; i<throws; i++) {
+        game.bowl(pins)
+    }
+}
+
 function CanCreateGameTest() {
     let theGame = new myGame()
     if (theGame) {
-        console.log("Passed!")
+        console.log("CanCreateGameTest = Passed!")
     } else {
         throw new Exception("CanCreateGameTest - FAILED!!!")
     }
 }
-
 CanCreateGameTest();
+
+function CanCreateBowlGutterGameTest() {
+    let theGame = new myGame()
+    bowlMany(theGame, 20, 0)
+
+    if (theGame.score() === 0) {
+        console.log("CanCreateBowlGutterGameTest = Passed!")
+    } else {
+        throw new Exception("CanCreateBowlGutterGameTest - FAILED!!!")
+    }
+}
+CanCreateBowlGutterGameTest();
+
+function CanCreateBowlAllOnesTest() {
+    let theGame = new myGame()
+    bowlMany(theGame, 20, 1)
+
+    if (theGame.score() === 20) {
+        console.log("CanCreateBowlAllOnesTest = Passed!")
+    } else {
+        throw new Exception("CanCreateBowlAllOnesTest - FAILED!!!")
+    }
+}
+CanCreateBowlAllOnesTest();
 
