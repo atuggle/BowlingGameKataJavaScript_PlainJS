@@ -40,3 +40,42 @@ function CanCreateBowlAllOnesTest() {
 }
 CanCreateBowlAllOnesTest();
 
+function CanCreateBowlAllSpareTest() {
+    let theGame = new myGame()
+    theGame.bowl(5)
+    theGame.bowl(5)
+    bowlMany(theGame, 18, 1)
+
+    if (theGame.score() === 29) {
+        console.log("CanCreateBowlAllSpareTest = Passed!")
+    } else {
+        throw new Exception("CanCreateBowlAllSpareTest - FAILED!!!")
+    }
+}
+CanCreateBowlAllSpareTest();
+
+function CanCreateBowlAllStrikeTest() {
+    let theGame = new myGame()
+    theGame.bowl(10)
+    bowlMany(theGame, 18, 1)
+
+    if (theGame.score() === 30) {
+        console.log("CanCreateBowlAllStrikeTest = Passed!")
+    } else {
+        throw new Exception("CanCreateBowlAllStrikeTest - FAILED!!!")
+    }
+}
+CanCreateBowlAllStrikeTest();
+
+function CanCreateBowlPerfectGameTest() {
+    let theGame = new myGame()
+    bowlMany(theGame, 12, 10)
+
+    let score = theGame.score()
+    if (score === 300) {
+        console.log("CanCreateBowlPerfectGameTest = Passed!")
+    } else {
+        throw new Exception("CanCreateBowlPerfectGameTest - FAILED!!!")
+    }
+}
+CanCreateBowlPerfectGameTest();
